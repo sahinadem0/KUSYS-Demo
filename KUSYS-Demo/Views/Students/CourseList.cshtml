@@ -1,0 +1,112 @@
+﻿@model IEnumerable<KUSYS_Demo.Models.StudentCourses>
+
+@{
+    ViewData["Title"] = "CourseStudentIndex";
+}
+<style>
+
+    .headContainer{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+
+    .aContainer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .courseA {
+        border: 1px solid #1089ff;
+        background: transparent;
+        align-content: flex-end;
+        padding: 10px;
+        margin: 0;
+        border-radius: 5px;
+        color: #333;
+        text-decoration: none;
+        color: #1089ff;
+    }
+
+    .studentsA {
+        border: 1px solid #1089ff;
+        background: transparent;
+        padding: 10px;
+        margin: 0;
+        border-radius: 5px;
+        color: #333;
+        text-decoration: none;
+        transition: 0.7s;
+        color: #1089ff;
+    }
+
+  h1{
+      margin-top:30px;
+      margin-bottom:30px;
+      font-size:1.5rem;
+  }
+    .table {
+        min-width: 1000px !important;
+        width: 100%;
+        background: #fff;
+    }
+
+        .table thead.thead-primary {
+            background: #1089ff;
+        }
+
+        .table thead th {
+            border: none;
+            padding: 20px 30px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .table tbody tr {
+            margin-bottom: 10px;
+        }
+
+        .table tbody th, .table tbody td {
+            border: none;
+            padding: 20px 30px;
+            border-bottom: 3px solid #f8f9fd;
+            font-size: 14px;
+        }
+
+</style>
+
+<h1>Student - Course List </h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<div class="headContainer">
+    <div class="aContainer">
+        <p>
+            <a class="courseA" asp-action="AddCourse">Add Course</a>
+        </p>
+    </div>
+</div>
+<table class="table">
+    <thead class="thead-primary">
+        <tr>
+            <th>Student Name</th>
+            <th>Course Code - Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FirstName)
+                    @Html.DisplayFor(modelItem => item.Student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Code) - @Html.DisplayFor(modelItem => item.Course.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
